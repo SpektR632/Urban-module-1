@@ -40,7 +40,6 @@ class Cafe:
         while not self.queue.empty() or any(False for i in self.tables if i.guest):
             for table in (i for i in self.tables if i.guest):
                 if table.guest.is_alive():
-                    table.guest.join()
                     print(f"{table.guest.name} покушал(-а) и ушел(ушла)")
                     print(f"Стол номер {table.number} свободен")
                     table.guest = None
