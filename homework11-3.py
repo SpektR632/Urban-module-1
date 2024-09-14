@@ -2,7 +2,7 @@ import inspect
 
 def introspection_info(object):
     info = {'type': type(object), 'attributes': [i for i in object.__dir__() if not callable(getattr(object, i))],
-            'methods': dir(object),
+            'methods': [i for i in object.__dir__() if callable(getattr(object, i))],
             'module': inspect.getmodule(object, 'homework11-3.py')}
     return info
 
