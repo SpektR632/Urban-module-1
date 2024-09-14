@@ -1,4 +1,4 @@
-from aiogram import Bot, Dispatcher, types
+from aiogram import Bot, Dispatcher, types, F
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.filters import Command
 import asyncio
@@ -8,14 +8,16 @@ bot = Bot(token=api)
 dp = Dispatcher(storage=MemoryStorage())
 
 
-@dp.message(Command('start')) # Подскажите, как установить две версии python, пришлось пока на 3.12 установить самый свежий aiogram
+@dp.message(Command('start'))
 async def start(message: types.Message):
-    print('Привет! Я бот помогающий твоему здоровью.')
+    await message.answer('Привет! Я бот помогающий твоему здоровью.')
+    await message.answer('Рады видеть Вас в нашем боте!')
 
 
-@dp.message()
+@dp.message(F.text)
 async def all_messages(message: types.Message):
-    print('Введите команду /start, чтобы начать общение.')
+    await message.answer('Введите команду /start, чтобы начать общение.')
+
 
 
 async def main():
