@@ -14,9 +14,10 @@ price INTEGER NOT NULL)
 
 products = [('Банан', 'Вкусный, желтый', '100'), ('Апельсин', 'Сладкий, оранжевый', '200'),
             ('Киви', 'С кислинкой, зеленый', '300'), ('Авокадо', 'странный, можно в салатик', '400')]
-for product, description, price in products:
-    cursor.execute("INSERT INTO Products (title, description, price) VALUES (?, ?, ?)", (product, description, price))
 
+# for product, description, price in products:
+    # cursor.execute("INSERT INTO Products (title, description, price) VALUES (?, ?, ?)", (product, description, price))
+connection.commit()
 def get_all_products():
     cursor.execute('''
     SELECT * FROM Products
