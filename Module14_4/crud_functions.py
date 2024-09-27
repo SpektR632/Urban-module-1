@@ -23,4 +23,4 @@ def get_all_products():
     SELECT * FROM Products
     ''')
     return cursor.fetchall()
-print(get_all_products())
+connection.close()
