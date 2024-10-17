@@ -26,7 +26,7 @@ async def create_user(user: User, username: str, age: int) -> User:
 
 
 @app.put('/users/{user_id}/{username}/{age}')
-async def update_user(user_id: int, username: str,age: int) -> str:
+async def update_user(user_id: int, username: str,age: int) -> User:
     try:
         user = users[user_id - 1]
         user.username = username
@@ -37,7 +37,7 @@ async def update_user(user_id: int, username: str,age: int) -> str:
 
 
 @app.delete('/users/{user_id}')
-async def delete_user(user_id: int) -> str:
+async def delete_user(user_id: int) -> User:
     try:
         user = list(filter(lambda x: x.id == user_id, users))[0]
         users.remove(user)
